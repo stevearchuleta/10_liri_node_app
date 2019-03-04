@@ -1,0 +1,37 @@
+
+/usr/local/Cellar/node/11.2.0/bin/node /Users/archuletasteve/Desktop/gitHub/liri-node-app/liri.js concert-this Hem 
+Hemis playing at Folkan Teater, Ornskoldsvik, , Sweden
+03/12/2019
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+/usr/local/Cellar/node/11.2.0/bin/node /Users/archuletasteve/Desktop/gitHub/liri-node-app/liri.js concert-this Ludovico Einaudi 
+Ludovico Einaudiis playing at Ev. Friedenskirche, Duisburg, , Germany
+03/10/2019
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+/usr/local/Cellar/node/11.2.0/bin/node /Users/archuletasteve/Desktop/gitHub/liri-node-app/liri.js movie-this The Matrix 
+Title: The Matrix
+Release Year: 1999
+IMDb Rating: 8.7
+Rotten Tomatoes Rating: undefined
+Country: USA
+Language: English
+Plot A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.
+Actors Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving
+/usr/local/Cellar/node/11.2.0/bin/node /Users/archuletasteve/Desktop/gitHub/liri-node-app/liri.js concert-this Pink 
+Pinkis playing at P!NK: BEAUTIFUL TRAUMA WORLD TOUR, Jacksonville, FL, United States
+03/05/2019
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
