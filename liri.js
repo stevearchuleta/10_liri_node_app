@@ -33,14 +33,14 @@ var command = process.argv[2];
 // var userQuery = process.argv.slice(3).join('');
 
 var searchItem = '';
-var dataline1;
-var dataline2;
-var dataline3;
-var dataline4;
-var dataline5;
-var dataline6;
-var dataline7;
-var dataline8;
+var dataLine1;
+var dataLine2;
+var dataLine3;
+var dataLine4;
+var dataLine5;
+var dataLine6;
+var dataLine7;
+var dataLine8;
 var commandLine = '';
 
 //the logic within this for loop concatenates the process.argv inputs (the user input: movie title, song name, etc...) and assigns them to a variable called 'commandLine'.  The empty space within quotations separates each word.
@@ -93,32 +93,32 @@ function concertThis(){
     console.log ('No upcoming shows found.')
   }
   else {
-    dataline1 = searchItem + 'is playing at ' + JSON.parse(body)[0].venue.name + ", " + JSON.parse(body)[0].venue.city + ", " + JSON.parse(body)[0].venue.region + ", " + JSON.parse(body)[0].venue.country;
+    dataLine1 = searchItem + 'is playing at ' + JSON.parse(body)[0].venue.name + ", " + JSON.parse(body)[0].venue.city + ", " + JSON.parse(body)[0].venue.region + ", " + JSON.parse(body)[0].venue.country;
 
-    dataline2 = moment(JSON.parse(body)[0].datetime).format('MM/DD/YYYY');
-    console.log(dataline1);
-    console.log(dataline2);
+    dataLine2 = moment(JSON.parse(body)[0].datetime).format('MM/DD/YYYY');
+    console.log(dataLine1);
+    console.log(dataLine2);
     logFile();
   }
 });
 };
 
-function spotifyThis(songName){
+function spotifyThis(){
   if (!searchItem) {
     searchItem = 'Le Onde by Ludovico Einaudi'
   }
-  spotify.search({ type: 'track', query: songName, limit: 5 }, function (error, response){
+  spotify.search({ type: 'track', query: searchItem}, function (error, response){
     if (error) {
       return console.log('An error occured. ' + error);
     }
-    dataline3 = '/nArtist: ' + JSON.stringify(response.tracks.items[0].artist);
-    dataline4 = '/nSong: ' + JSON.stringify(response.tracks.items[0].name);
-    dataline5 = '/nSpotify Sample: ' + JSON.stringify(response.tracks.album.itmes.artists[0].external_urls.spotify);
-    dataline6 = '/nAlbum: ' + JSON.stringify(response.tracks.items[0])
-    console.log(dataline1);
-    console.log(dataline2);
-    console.log(dataline3);
-    console.log(dataline4);
+    dataLine1 = '/nArtist: ' + JSON.stringify(response.tracks.items[0].artist[0].name);
+    dataLine2 = '/nSong: ' + JSON.stringify(response.tracks.items[0].name);
+    dataLine3 = '/nSpotify Sample: ' + JSON.stringify(response.tracks.album.items.artists[0].external_urls.spotify);
+    dataLine4 = '/nAlbum: ' + JSON.stringify(response.tracks.items[0])
+    console.log(dataLine1);
+    console.log(dataLine2);
+    console.log(dataLine3);
+    console.log(dataLine4);
     logFile();
   });
   ;}
@@ -127,26 +127,26 @@ function spotifyThis(songName){
 function movieThis(movieName){
 
     if (!searchItem) {
-      searchItem = 'A Man For All Seasons'
+      searchItem = 'A Man For All Seasons';
     }
     request('http://www.omdbapi.com/?apikey=5170ef64&t=' + searchItem, function(error, response, body) {
     if (!error && response.statusCode === 200) {
-      dataline1 = 'Title: ' + JSON.parse(body).Title;
-      dataline2 = 'Release Year: ' + JSON.parse(body).Year;
-      dataline3 = 'IMDb Rating: ' + JSON.parse(body).imdbRating;
-      dataline4 = 'Rotten Tomatoes Rating: ' + JSON.parse(body).Rating;
-      dataline5 = 'Country: ' + JSON.parse(body).Country;
-      dataline6 = 'Language: ' + JSON.parse(body).Language;
-      dataline7 = 'Plot ' + JSON.parse(body).Plot;
-      dataline8 = 'Actors ' + JSON.parse(body).Actors;
-      console.log(dataline1);
-      console.log(dataline2);
-      console.log(dataline3);
-      console.log(dataline4);
-      console.log(dataline5);
-      console.log(dataline6);
-      console.log(dataline7);
-      console.log(dataline8);
+      dataLine1 = 'Title: ' + JSON.parse(body).Title;
+      dataLine2 = 'Release Year: ' + JSON.parse(body).Year;
+      dataLine3 = 'IMDb Rating: ' + JSON.parse(body).imdbRating;
+      dataLine4 = 'Rotten Tomatoes Rating: ' + JSON.parse(body).Rating;
+      dataLine5 = 'Country: ' + JSON.parse(body).Country;
+      dataLine6 = 'Language: ' + JSON.parse(body).Language;
+      dataLine7 = 'Plot ' + JSON.parse(body).Plot;
+      dataLine8 = 'Actors ' + JSON.parse(body).Actors;
+      console.log(dataLine1);
+      console.log(dataLine2);
+      console.log(dataLine3);
+      console.log(dataLine4);
+      console.log(dataLine5);
+      console.log(dataLine6);
+      console.log(dataLine7);
+      console.log(dataLine8);
       logFile();
     }
   });
@@ -165,7 +165,7 @@ function doWhatItSays(){
 }
 
 function logFile(){
-  fs.appendFile('./log.txt', '\r\n' + commandLine + '\r\n' + dataline1 + '\r\n' + dataline2 + '\r\n' + dataline3 + '\r\n' + dataline4 + '\r\n' + dataline5 + '\r\n' +  dataline6 + '\r\n' + dataline7 + '\r\n' + dataline8, function (error){
+  fs.appendFile('./log.txt', '\r\n' + commandLine + '\r\n' + dataLine1 + '\r\n' + dataLine2 + '\r\n' + dataLine3 + '\r\n' + dataline4 + '\r\n' + dataline5 + '\r\n' +  dataline6 + '\r\n' + dataLine7 + '\r\n' + dataLine8, function (error){
     if (error){
       return (console.log(error));
     }
