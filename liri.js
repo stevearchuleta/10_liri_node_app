@@ -78,49 +78,48 @@ searchItem = searchItem.trim();
 
 
 function concertThis(){  
-  if (!searchItem){
+  if (!searchItem) {
     searchItem = 'Jimmy Buffet'
   }
+    // var message = `SEARCHING FOR ${userQuery}'s NEXT PERFORMANCE.`
+    request("https://rest.bandsintown.com/artists/" + searchItem + "/events?app_id=ee388fbe45944a2e54ad668916eaac75", function (error, response, body){
+    // if (error){
+    //   return console.log('An error occured.');
+    // }
+    // var userBand = (JSON.parse(body)[0]);
+    if (JSON.parse(body)[0] === undefined) {
+      console.log ('No upcoming shows found.')
+    }
+    else {
+      dataLine1 = searchItem + 'is playing at ' + JSON.parse(body)[0].venue.name + ", " + JSON.parse(body)[0].venue.city + ", " + JSON.parse(body)[0].venue.region + ", " + JSON.parse(body)[0].venue.country;
 
-  // var message = `SEARCHING FOR ${userQuery}'s NEXT PERFORMANCE.`
-  
-  request("https://rest.bandsintown.com/artists/" + searchItem + "/events?app_id=ee388fbe45944a2e54ad668916eaac75", function (error, response, body){
-  // if (error){
-  //   return console.log('An error occured.');
-  // }
-  // var userBand = (JSON.parse(body)[0]);
-  if (JSON.parse(body)[0] === undefined) {
-    console.log ('No upcoming shows found.')
-  }
-  else {
-    dataLine1 = searchItem + 'is playing at ' + JSON.parse(body)[0].venue.name + ", " + JSON.parse(body)[0].venue.city + ", " + JSON.parse(body)[0].venue.region + ", " + JSON.parse(body)[0].venue.country;
-
-    dataLine2 = moment(JSON.parse(body)[0].datetime).format('MM/DD/YYYY');
-    console.log(dataLine1);
-    console.log(dataLine2);
-    logFile();
-  }
-});
+      dataLine2 = moment(JSON.parse(body)[0].datetime).format('MM/DD/YYYY');
+      console.log(dataLine1);
+      console.log(dataLine2);
+      logFile();
+    }
+  });
 };
 
-function spotifyThis(){
+
+function spotifyThis() {
   if (!searchItem) {
     searchItem = 'Le Onde by Ludovico Einaudi'
   }
-  spotify.search({ type: 'track', query: searchItem}, function (error, response){
-    if (error) {
-      return console.log('An error occured. ' + error);
-    }
-    dataLine1 = '/nArtist: ' + JSON.stringify(response.tracks.items[0].artist[0].name);
-    dataLine2 = '/nSong: ' + JSON.stringify(response.tracks.items[0].name);
-    dataLine3 = '/nSpotify Sample: ' + JSON.stringify(response.tracks.album.items.artists[0].external_urls.spotify);
-    dataLine4 = '/nAlbum: ' + JSON.stringify(response.tracks.items[0])
-    console.log(dataLine1);
-    console.log(dataLine2);
-    console.log(dataLine3);
-    console.log(dataLine4);
-    logFile();
-  });
+    spotify.search({ type: 'track', query: searchItem}, function (error, response){
+      if (error) {
+        return console.log('An error occured. ' + error);
+      }
+      dataLine1 = '/nArtist: ' + JSON.stringify(response.tracks.items[0].artist[0].name);
+      dataLine2 = '/nSong: ' + JSON.stringify(response.tracks.items[0].name);
+      dataLine3 = '/nSpotify Sample: ' + JSON.stringify(response.tracks.album.items.artists[0].external_urls.spotify);
+      dataLine4 = '/nAlbum: ' + JSON.stringify(response.tracks.items[0])
+      console.log(dataLine1);
+      console.log(dataLine2);
+      console.log(dataLine3);
+      console.log(dataLine4);
+      logFile();
+    });
   ;}
   
 

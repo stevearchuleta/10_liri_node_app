@@ -1,13 +1,4 @@
 
-/usr/local/Cellar/node/11.2.0/bin/node /Users/archuletasteve/Desktop/gitHub/liri-node-app/liri.js concert-this Hem 
-Hemis playing at Folkan Teater, Ornskoldsvik, , Sweden
-03/12/2019
-undefined
-undefined
-undefined
-undefined
-undefined
-undefined
 /usr/local/Cellar/node/11.2.0/bin/node /Users/archuletasteve/Desktop/gitHub/liri-node-app/liri.js concert-this Ludovico Einaudi 
 Ludovico Einaudiis playing at Ev. Friedenskirche, Duisburg, , Germany
 03/10/2019
